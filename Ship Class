@@ -1,0 +1,83 @@
+public class Ship
+{
+       private int row; // holds the position
+       private int col; // holds the position
+       private int length; // holds the length
+       private String direction; // holds the directs
+      
+       public static final int UNSET = -1; // turns the direction into a number
+       public static final int HORIZONTAL = 0;// turns the direction into a number
+       public static final int VERTICAL = 1;// turns the direction into a number
+      
+       public Ship(int l){ //makes a ship object that sets the length to 1 because there will be multiple 1 length ship objects that make the other length ships.
+           length = l;
+           row = UNSET;
+           col = UNSET;
+       }
+       public void setLocation(int r, int c){ // sets the location of the ship
+           row = r;
+           col = c;
+       }
+      
+       public void setDirection(int d){ //sets direction based off the number input
+          if(d == HORIZONTAL){
+              direction = "horizontal";
+          }
+           if(d == VERTICAL){
+              direction = "vertical";
+          } if (d == UNSET){
+              direction = "unset";
+          }
+          
+       }
+       public int getRow(){ // returns row
+           return row;
+       }
+       public int getCol(){ // getter method returns col
+           return col;
+       }
+       public int getLength(){ // getter methos that returns length
+           return length;
+       }
+       public int getDirection(){ // returns the direction as an int
+           if (direction == "horizontal"){
+               return HORIZONTAL;
+           }
+           if(direction == "vertical"){
+               return VERTICAL;
+           }
+           return UNSET;
+       }
+      
+    private String directionToString(){ // returns the direction as a string
+         if(direction == null){
+             return "unset direction";
+         }
+         return direction;
+      }
+      
+       private String locationToString(){ //returns the location as a string (x,y)
+           if(this.isLocationSet() == false){
+           return "unset location";
+           }
+           return  row + ", " + col;
+       }
+       public String toString(){ // returns the whole informtion of the ship
+           return directionToString() + " ship of length " + length + " at " + "(" + locationToString() + ")";
+       }
+      
+      
+       public boolean isLocationSet(){ // returns boolean if the location is null
+           if (row == -1 || col == -1){
+               return false;
+           }
+           return true;
+       }
+       public boolean isDirectionSet(){ // returns boolean if the direction is set
+           if (direction == null){
+               return false;
+           }
+           return true;
+       }
+
+}
